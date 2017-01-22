@@ -36,8 +36,7 @@ angular.module('todoApp', [])
         }
     }
     
-    function update(index) {
-        data.todos[index].done=!data.todos[index].done;
+    function update() {
         localStorage.setItem('listeItem',JSON.stringify(data.todos));
     }
     
