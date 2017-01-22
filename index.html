@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>my TodoList</title>
+    <meta charset="utf8"/>
+    <!--Import Google Icon Font-->
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/style.css"/>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <style>
+    .done {text-decoration: line-through; color: grey;}
+    .invisible {visibility: hidden;}
+    </style>
+</head>
+
+<body ng-app="todoApp">
+    <header>
+        <h1>Todolist!</h1>
+    </header>
+    <main ng-controller="TodoListController as ctrl" class="container">
+        <div class="container">
+            <div class="center">
+                <input type="text" ng-model="ctrl.data.todoText" placeholder="List Element">
+                <button class="btn waves-effect waves-light" ng-click="ctrl.addTodo()">add
+                    <i class="material-icons right">send
+                    </i>
+                </button>
+                <button class="btn waves-effect waves-light grey" ng-disabled="ctrl.data.todos.length==0" ng-click="ctrl.clear()">clear
+                    <i class="material-icons right">delete
+                        </i>
+                </button>
+            </div>
+            <ul class="collection" ng-show="ctrl.data.todos.length>0">
+                <li ng-repeat="todo in ctrl.data.todos track by $index" class="collection-item">
+                <span ng-class="{done:todo.done}">{{todo.text}}</span>
+                <div class="switch secondary-content">
+                    <label>
+                    Todo
+                    <input type="checkbox" ng-checked="{{todo.done}}" ng-model="item$index" ng-change="ctrl.update($index)">
+                    <span class="lever"></span>
+                    Done
+                    </label>
+                </div>
+                </li>
+            </ul>
+            <p ng-show="ctrl.data.todos.length==0" class="flow-text">Ce fût un plaisir d'avoir pu vous aider.</p>
+        </div>
+    </main>
+    
+    <footer class="page-footer grey">
+        <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+            <h5 class="white-text">TodoList</h5>
+            <p class="grey-text text-lighten-4">Antoine Guingand</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+            <ul>
+                <li><a class="grey-text text-lighten-3" href="#!">IUT Robert Schuman</a></li>
+                <li><a class="grey-text text-lighten-3" href="#!">Departement Informatique</a></li>
+            </ul>
+            </div>
+        </div>
+        </div>
+        <div class="footer-copyright">
+        <div class="container">
+        Made with <a class="light-blue-text text-lighten-3" href="http://materializecss.com">Materialize</a> & 
+        <a class="light-blue-text text-lighten-3" href="https://angularjs.org/">AngularJS</a>
+        </div>
+        </div>
+    </footer>
+    
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/todolist.js"></script>
+</body>
+</html>
+        
